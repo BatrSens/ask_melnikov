@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="h_questions row"><h3 class="h_title">{{ h_title }}</h3><a href="{% url 'hot' %}"><img class="hot"
+                                                                                                      src="{{ "img/hot_link.png" }}"></a>
+    </div>
+
+    {% for quest in questions %}
+        {% include "modules/quest.html" %}
+    {% endfor %}
+
+    {% include "modules/paginator.html" %}
+{% endblock %}

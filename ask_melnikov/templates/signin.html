@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if auth %}
+        You're already logged in!
+    {% else %}
+            <div class="h_questions row"><h3 class="h_title h_login">Log in</h3></div>
+
+            <form class="login">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">E-mail</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control is-invalid" id="inputEmail3" placeholder="E-mail">
+                        <div class="invalid-feedback">
+                            Please provide a valid email address.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <!--div class="col-sm-10">
+                        <input type="bottom" value="Log in!" class="btn btn-primary btn-login" onclick='location.href="{% url 'ask' %}"'>
+                    </div-->
+                    <div class="col-sm-10">
+                        <a href="{% url 'login' %}">Log in!</a>
+                    </div>
+                    <a href="{% url 'signup' %}">create new account</a>
+                </div>
+            </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+<div class="question row">
+    <div class="col-md-2">
+        <img class="q-avatar" src="{{ quest.avatar }}">
+        <div class="q-nick"><a href="#" class="q-nick">{{ quest.nickname }}</a></div>
+        <a href="#" class="like">Like!</a><a href="#" class="likes">{{ quest.likes }}</a>
+    </div>
+
+    <div class="col-md-10">
+        <div class="q-title"><a href="{% url 'question' quest.id %}">{{ quest.title }}</a></div>
+        <div class="q-text">{{ quest.text }}{{ quest.id }}
+            <br>
+            <div class="tags">
+                Rating: <a href="{% url 'question' quest.id %}">{{ quest.rating }}</a>, Answers: <a
+                    href="{% url 'question' quest.id %}">{{ quest.answers_count }}</a>,
+                Tags: {% for tag in quest.tags %}<a href="/tag/{{ tag }}">{{ tag }}</a> {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

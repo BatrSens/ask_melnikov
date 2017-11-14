@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="big-question row">
+
+        <div class="col-md-2">
+
+            <img class="q-big-avatar" src="{{ quest.avatar }}">
+            <a href="#" class="q-big-nick">{{ quest.nickname }}</a>
+            <a href="#" class="like">Like!</a><a href="#" class="likes">{{ quest.likes }}</a>
+
+        </div>
+
+        <div class="col-md-10 q-big-text">
+            <div class="q-title">{{ quest.title }}</div>
+            <div class="q-text">{{ quest.text }}{{ quest.id }}
+                <br>
+                <div class="tags">
+                    Tags: {% for tag in quest.tags %}<a href="/tag/{{ tag }}">{{ tag }}</a> {% endfor %}
+                </div>
+                <div class="rating">
+                    <a href="#" class="plus"></a><a href="#" class="minus"></a><a href="#">{{ quest.rating }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for answer in answers %}
+        {% include "modules/answer.html" %}
+    {% endfor %}
+    {% include "modules/paginator.html" %}
+    <hr>
+    {% if auth %}
+        <form class="new-question">
+            <div class="form-group row">
+                <textarea class="form-control your-answ" rows="10" placeholder="Enter your answer here"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-answ">Answer</button>
+        </form>
+    {% else %}
+        Please, log in to answer questions!
+    {% endif %}
+{% endblock %}
