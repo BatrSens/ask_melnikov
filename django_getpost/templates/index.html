@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GETPOST</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>Post here:</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="post">
+        <input type="submit" value="ok">
+    </form>
+    <br>
+    {% if data %}
+        <h5>{{ method }} method:</h5>
+        {% for key, value in data.items %}
+            {{ key }} : {{ value }}
+            <br>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
